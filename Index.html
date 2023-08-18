@@ -56,19 +56,24 @@
             </div>
                <hr />
             <div class="row" style="padding-left: 30px;">
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label for="Glable">Graph Lable:</label>
                        <input type="text" class="form-control" id="Glable">
                    </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="form-group">
                         <label for="Glable">Bar Width Ratio ( % ):</label>
                        <input type="text" class="form-control" id="txtbarwidth">
                    </div>
                 </div>
-             
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="Glable">Animation Duration:</label>
+                       <input type="text" class="form-control" id="txtAnimationDur">
+                   </div>
+                </div>
                
             </div>
             <hr />
@@ -99,7 +104,7 @@
             </div>
              <hr />
              <div class="row" style="padding-left: 30px;padding-top: 5px;">
-                <h5><b>X Axis</b></h5>
+                <h5><b>X Axis ticks</b></h5>
                 </div>
                 <div class="row" style="padding-left: 30px;padding-top: 5px;">
     
@@ -119,6 +124,37 @@
                         <div class="form-group">
                             <label for="Glable">Font Weight:</label>
                            <input type="text" class="form-control" id="txtXFontWeight">
+                       </div>
+                    </div>
+                    
+                </div>
+                <div class="row" style="padding-left: 30px;padding-top: 5px;">
+                    <h5><b>X Axis Title</b></h5>
+                    </div>
+                <div class="row" style="padding-left: 30px;padding-top: 5px;">
+    
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                        <div class="form-group">
+                            <label for="Glable">Text:</label>
+                           <input type="text" class="form-control" id="txtXTFText">
+                       </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                        <div class="form-group">
+                            <label for="Glable">Font Color:</label>
+                           <input type="text" class="form-control" id="txtXTFcolor">
+                       </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                        <div class="form-group">
+                            <label for="Glable">Font Size:</label>
+                           <input type="text" class="form-control" id="txtXTFsize">
+                       </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                        <div class="form-group">
+                            <label for="Glable">Font Weight:</label>
+                           <input type="text" class="form-control" id="txtXTFWeight">
                        </div>
                     </div>
                     
@@ -157,6 +193,9 @@
                             }]
                         },
                         options: {
+                            animation:{
+                                duration: 1000
+                            } ,
                             responsive: true,
                             maintainAspectRatio: false,
                             scales: {
@@ -221,7 +260,7 @@
 
                         //txtbarwidth
                         if ($('#txtbarwidth').val() == '#' || $('#txtbarwidth').val() == 'undefined' || $('#txtbarwidth').val() == '') {
-                            temp.data.datasets[0].barPercentage = '';
+                            temp.data.datasets[0].barPercentage = '0.2';
                         }
                         else {
                             temp.data.datasets[0].barPercentage = $('#txtbarwidth').val();
@@ -267,7 +306,7 @@
                         }
 
                          //txtXFontSize
-                         if ($('#txtXFontSize').val() == '') {
+                        if ($('#txtXFontSize').val() == '') {
                             temp.options.scales.x.ticks.font.size = '12';
                         }
                         else {
@@ -281,7 +320,47 @@
                         else {
                             temp.options.scales.x.ticks.font.weight = $('#txtXFontWeight').val();
                         }
-                        
+
+                        //txtXTFcolor
+                        if ($('#txtXTFcolor').val() == '') {
+                            temp.options.scales.x.title.color = 'black';
+                        }
+                        else {
+                            temp.options.scales.x.title.color = $('#txtXTFcolor').val();
+                        }
+
+                        //txtXTFsize
+                        if ($('#txtXTFsize').val() == '') {
+                            temp.options.scales.x.title.font.size = '12';
+                        }
+                        else {
+                            temp.options.scales.x.title.font.size = $('#txtXTFsize').val();
+                        }
+
+                        //txtXTFText
+                        if ($('#txtXTFText').val() == '') {
+                            temp.options.scales.x.title.font.color = 'black';
+                        }
+                        else {
+                            temp.options.scales.x.title.font.color = $('#txtXTFText').val();
+                        }
+
+                        //txtXTFWeight
+                        if ($('#txtXTFWeight').val() == '') {
+                            temp.options.scales.x.title.font.weight = '';
+                        }
+                        else {
+                            temp.options.scales.x.title.font.weight = $('#txtXTFWeight').val();
+                        }
+
+                          //txtAnimationDur
+                        if ($('#txtAnimationDur').val() == '') {
+                            temp.options.animation.duration = '1000';
+                        }
+                        else {
+                            temp.options.animation.duration = $('#txtAnimationDur').val();
+                        }
+
                         rturn_8157845myChart = new Chart(ctx, temp);
 
                     };
