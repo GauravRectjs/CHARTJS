@@ -1,0 +1,273 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="Chart.js" type="text/javascript"></script>
+    <script src="bootstrap.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        .chart-wrapper
+        {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+   
+</head>
+<body>
+<hr />
+    <div class="row">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+       
+       
+            <div class="row" style="padding-left: 30px;padding-top: 5px;">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Chart Type <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" onclick="setvaluesType('bar','TY'); return false">Bar</a></li>
+                                <li><a href="#" onclick="setvaluesType('line','TY'); return false">Line</a></li>
+                                <li><a href="#" onclick="setvaluesType('pie','TY'); return false">Pie</a></li>
+                                <li><a href="#" onclick="setvaluesType('doughnut','TY'); return false">Doughnut</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                    Chart Color Platttes <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" onclick="setvaluesType('CT1','CPLatte'); return false">
+                                    <img src="colorplattegraph1.PNG" />
+                                    </a></li>
+                                    <li><a href="#" onclick="setvaluesType('CT2','CPLatte'); return false">
+                                    <img src="colorplattegraph2.PNG" />
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+            </div>
+               <hr />
+            <div class="row" style="padding-left: 30px;">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="Glable">Graph Lable:</label>
+                       <input type="text" class="form-control" id="Glable">
+                   </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label for="Glable">Bar Width Ratio ( % ):</label>
+                       <input type="text" class="form-control" id="txtbarwidth">
+                   </div>
+                </div>
+             
+               
+            </div>
+            <hr />
+            <div class="row" style="padding-left: 30px;padding-top: 5px;">
+            <h5><b>Y Axis</b></h5>
+            </div>
+            <div class="row" style="padding-left: 30px;padding-top: 5px;">
+
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="Glable">Font Color:</label>
+                       <input type="text" class="form-control" id="txtYFColor">
+                   </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="Glable">Font Size:</label>
+                       <input type="text" class="form-control" id="txtYFontSize">
+                   </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group">
+                        <label for="Glable">Font Weight:</label>
+                       <input type="text" class="form-control" id="txtYFontWeight">
+                   </div>
+                </div>
+                
+            </div>
+             <hr />
+             <div class="row" style="padding-left: 30px;padding-top: 5px;">
+                <h5><b>X Axis</b></h5>
+                </div>
+                <div class="row" style="padding-left: 30px;padding-top: 5px;">
+    
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label for="Glable">Font Color:</label>
+                           <input type="text" class="form-control" id="txtXFColor">
+                       </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label for="Glable">Font Size:</label>
+                           <input type="text" class="form-control" id="txtXFontSize">
+                       </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <div class="form-group">
+                            <label for="Glable">Font Weight:</label>
+                           <input type="text" class="form-control" id="txtXFontWeight">
+                       </div>
+                    </div>
+                    
+                </div>
+              <hr />
+            <div class="row" style="padding-left: 30px;">
+                <div class="form-group">
+                   <button type="button" onclick="rturn_8157845change(); return false" class="btn btn-primary">Generate</button>
+                </div>
+            </div>
+            <input type="hidden" id="hdnGRPType" value="#" />
+            <input type="hidden" id="hdnGRPDtlable" value="#" />
+            <input type="hidden" id="hdnGRPcolorplatte" value="#" />
+        </div>
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+            <div class="chart-wrapper" id="z1scrolldiv">
+               
+                <canvas id="rturn_8157845" width="391" height="195" style="display: block; box-sizing: border-box;
+                    height: 195px; width: 391px;"></canvas>
+                <script type="text/javascript">
+
+                  
+
+                    $(document).ready(function () { rturn_8157845change('bar'); });
+                    var rturn_8157845config = {
+                        type: 'bar',
+                        data: { labels: ['Male', 'Female', ],
+                            datasets: [{
+                                label: ' No. of Children benefiting from the FBC',
+                                data: [3410, 3220, ],
+                                fill: false,
+                                barPercentage: 0.3,
+                                borderColor: '#65cea6',
+                                tension: 0.2,
+                                backgroundColor: ['#ebb91c', '#0ab6a0', '#4f74b8']
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    border: { color: 'red' },
+                                    ticks: {
+                                        color: 'black',
+                                        font: {
+                                            size: 15,
+                                            weight: 'bold'
+                                        }
+                                    }
+                                },
+                                x: {
+                                    title: {
+                                        color: 'black',
+                                        display: true,
+                                        text: 'Month',
+                                        font: {
+                                            size: 20,
+                                            weight: 'bold'
+                                        }
+                                    },
+                                    ticks: {
+
+                                        color: 'black',
+                                        font: {
+                                            size: 18,
+                                            weight: 'bold'
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                    };
+
+                    var rturn_8157845myChart;
+                    function rturn_8157845change() 
+                    {
+                        var ctx = document.getElementById('rturn_8157845').getContext('2d');
+
+                        if (rturn_8157845myChart) { rturn_8157845myChart.destroy(); }
+                        
+                        var temp = jQuery.extend(true, {}, rturn_8157845config);
+
+                        debugger;
+                        if ($('#hdnGRPType').val() == '#' || $('#hdnGRPType').val() == 'undefined') {
+                            temp.type = 'bar'; 
+                        }
+                        else {
+                            temp.type = $('#hdnGRPType').val();
+                        }
+
+                        if ($('#Glable').val() == '#' || $('#Glable').val() == 'undefined') {
+                            temp.data.datasets[0].label = '';
+                        }
+                        else {
+                            temp.data.datasets[0].label = $('#Glable').val();
+                        }
+
+                        //txtbarwidth
+                        if ($('#txtbarwidth').val() == '#' || $('#txtbarwidth').val() == 'undefined' || $('#txtbarwidth').val() == '') {
+                            temp.data.datasets[0].barPercentage = '';
+                        }
+                        else {
+                            temp.data.datasets[0].barPercentage = $('#txtbarwidth').val();
+                        }
+
+                        if ($('#hdnGRPcolorplatte').val() == '#' || $('#hdnGRPcolorplatte').val() == 'undefined') {
+                            temp.data.datasets[0].backgroundColor = '';
+                        }
+                        else {
+                            temp.data.datasets[0].backgroundColor = [];
+                            temp.data.datasets[0].backgroundColor = $('#hdnGRPcolorplatte').val().split(',');
+                        }
+                        //txtYFColor
+                        if ($('#txtYFColor').val() == '') {
+                            temp.data.datasets[0].backgroundColor = '';
+                        }
+                        else {
+                            temp.data.datasets[0].backgroundColor = [];
+                            temp.data.datasets[0].backgroundColor = $('#txtYFColor').val();
+                        }
+                        
+                        rturn_8157845myChart = new Chart(ctx, temp);
+
+                    };
+
+                    
+                    function setvaluesType(ValueDT, proptype) {
+                        if (proptype == 'TY') {
+                            $('#hdnGRPType').val(ValueDT);
+                        }
+                        else if (proptype == 'CPLatte') {
+                       
+                        if (ValueDT == "CT1") {
+                            ctplat = '#62bbc3, #e06947, #e4c2b9';
+                        }
+                        else if (ValueDT == "CT2") {
+                            ctplat = '#ff0808, #d8ff08, #1afe07';
+                        }
+
+                        $('#hdnGRPcolorplatte').val(ctplat);
+                        
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
